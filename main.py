@@ -2,21 +2,9 @@ from tkinter import *
 import requests
 from gtts import gTTS
 import os
-from mpyg321.mpyg321 import MPyg321Player
 import pygame
 from os import path
 from pydub import AudioSegment
-
-
-def generate_voice():
-    kanye_voice = "try something"
-    language = 'en'
-    kanye_object = gTTS(text=kanye_voice, lang=language, slow=False)
-    # player = MPyg321Player()
-
-    # kanye_object.save("kanye.mp3")
-    # os.system("mpg321 kanye.mp3")
-    # player.play_song("/home/qlt807/Documents/Kanye/kanye_quotes/kanye.mp3")
 
 
 def get_quote():
@@ -30,7 +18,6 @@ def get_quote():
     language = 'en'
     kanye_object = gTTS(text=kanye_voice, lang=language, slow=False)
     kanye_object.save("kanye.mp3")
-    os.system("kanye.mp3")
     AudioSegment.from_mp3("kanye.mp3").export('kanye.ogg', format='ogg')
     pygame.mixer.init()
     pygame.mixer.music.load("kanye.ogg")
@@ -51,9 +38,6 @@ canvas.grid(row=0, column=0)
 kanye_img = PhotoImage(file="kanye.gif")
 kanye_button = Button(image=kanye_img, highlightthickness=0, command=get_quote)
 kanye_button.grid(row=1, column=0)
-
-# pygame.mixer.init()
-# AudioSegment.from_mp3("kanye.mp3").export('kanye.ogg', format='ogg')
 
 
 window.mainloop()
